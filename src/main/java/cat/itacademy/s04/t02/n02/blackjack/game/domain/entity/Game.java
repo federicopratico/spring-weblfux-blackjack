@@ -22,12 +22,12 @@ public class Game {
         this.gameStatus = GameStatus.PENDING_PLAYER;
     }
 
-    public static Game create(String playerName, int decks) {
+    public static Game create(String playerName) {
         GameId gameId = GameId.generateNewId();
         return new Game(
                 gameId,
                 new Dealer(),
-                Shoe.create(decks),
+                Shoe.create(),
                 playerName
         );
     }
