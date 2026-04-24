@@ -10,7 +10,6 @@ import lombok.Getter;
 
 import java.math.BigDecimal;
 
-@Getter
 public class Seat {
     private PlayerReference playerReference;
     private Hand hand;
@@ -42,5 +41,21 @@ public class Seat {
 
     public boolean hasResolvedPlayer() {
         return playerReference instanceof ResolvedPlayerReference;
+    }
+
+    public PlayerReference getPlayerReference() {
+        return playerReference;
+    }
+
+    public Hand getHand() {
+        return hand;
+    }
+
+    public BigDecimal getBet() {
+        return bet;
+    }
+
+    public PlayerStatus getPlayerStatus() {
+        return playerStatus;
     }
 }

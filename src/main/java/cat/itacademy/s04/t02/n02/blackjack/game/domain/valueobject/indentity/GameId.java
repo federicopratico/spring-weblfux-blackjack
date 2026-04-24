@@ -7,4 +7,8 @@ public record GameId(UUID uuid) {
     public static GameId generateNewId() {
         return new GameId(UUID.randomUUID());
     }
+
+    public String toString() {
+        return uuid.toString();
+    }
 }
