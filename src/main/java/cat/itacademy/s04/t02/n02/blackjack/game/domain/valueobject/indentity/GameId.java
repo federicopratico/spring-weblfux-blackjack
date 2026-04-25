@@ -8,6 +8,10 @@ public record GameId(UUID uuid) {
         return new GameId(UUID.randomUUID());
     }
 
+    public static GameId of(String uuid) {
+        return new GameId(UUID.fromString(uuid));
+    }
+
     public String toString() {
         return uuid.toString();
     }

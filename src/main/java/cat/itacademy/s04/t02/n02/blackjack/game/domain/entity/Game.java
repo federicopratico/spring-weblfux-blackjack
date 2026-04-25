@@ -14,21 +14,31 @@ public class Game {
     private Shoe shoe;
     private GameStatus gameStatus;
 
-    public Game(GameId gameId, Dealer dealer, Shoe shoe, String playerName) {
+    private Game(GameId gameId, Dealer dealer, Seat seat, Shoe shoe, GameStatus gameStatus) {
         this.gameId = gameId;
         this.dealer = dealer;
+        this.seat = seat;
         this.shoe = shoe;
-        this.seat = Seat.withUnresolvedPlayer(playerName);
-        this.gameStatus = GameStatus.PENDING_PLAYER;
+        this.gameStatus = gameStatus;
     }
 
     public static Game create(String playerName) {
-        GameId gameId = GameId.generateNewId();
+        return new Game(
+                GameId.generateNewId(),
+                Dealer.create(),
+                Seat.withUnresolvedPlayer(playerName),
+                Shoe.create(),
+                GameStatus.PENDING_PLAYER
+        );
+    }
+
+    public static Game reconstruct(GameId gameId, Dealer dealer, Seat seat, Shoe shoe, GameStatus gameStatus) {
         return new Game(
                 gameId,
-                new Dealer(),
-                Shoe.create(),
-                playerName
+                dealer,
+                seat,
+                shoe,
+                gameStatus
         );
     }
 

@@ -23,12 +23,21 @@ public class Shoe {
         this.initialShoeSize = cards.size();
     }
 
+    private Shoe(List<Card> cards, int initialShoeSize) {
+        this.cards = new LinkedList<>(cards);
+        this.initialShoeSize = initialShoeSize;
+    }
+
     public static Shoe create() {
         return new Shoe(2);
     }
 
     public static Shoe create(int numberOfDecks) {
         return new Shoe(numberOfDecks);
+    }
+
+    public static Shoe reconstruct(List<Card> cards, int initialShoeSize) {
+        return new Shoe(cards, initialShoeSize);
     }
 
     public Optional<Card> draw() {
@@ -40,5 +49,13 @@ public class Shoe {
 
     public boolean isCutReached() {
         return cards.size() <= CUT_THRESHOLD * initialShoeSize;
+    }
+
+    public List<Card> getCards() {
+        return List.copyOf(cards);
+    }
+
+    public int getInitialShoeSize() {
+        return initialShoeSize;
     }
 }

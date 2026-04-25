@@ -27,9 +27,17 @@ public class Seat {
         PlayerReference unresolvedPlayerReference = new UnresolvedPlayerReference(playerName);
         return new Seat(
                 unresolvedPlayerReference,
-                new Hand(),
+                Hand.create(),
                 BigDecimal.ZERO,
                 PlayerStatus.WAITING_FOR_BET);
+    }
+
+    public static Seat reconstruct(PlayerReference playerReference, Hand hand, BigDecimal bet, PlayerStatus playerStatus) {
+        return new Seat(
+                playerReference,
+                hand,
+                bet,
+                playerStatus);
     }
 
     public void resolvePlayer(PlayerId playerId) {

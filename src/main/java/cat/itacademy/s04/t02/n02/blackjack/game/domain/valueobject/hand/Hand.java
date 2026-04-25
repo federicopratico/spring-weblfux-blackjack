@@ -7,7 +7,23 @@ import java.util.List;
 
 public class Hand {
 
-    private List<Card> cards = new ArrayList<>();
+    private List<Card> cards;
+
+    private Hand() {
+        cards = new ArrayList<>();
+    }
+
+    private Hand(List<Card> cards) {
+        this.cards = new ArrayList<>(cards);
+    }
+
+    public static Hand create() {
+        return new Hand();
+    }
+
+    public static Hand reconstruct(List<Card> cards) {
+        return new Hand(cards);
+    }
 
     public void addCard(Card card) {
         cards.add(card);
