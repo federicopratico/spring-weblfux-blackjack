@@ -7,4 +7,8 @@ public record PlayerId(UUID uuid) {
     public static PlayerId generateNewId() {
         return new PlayerId(UUID.randomUUID());
     }
+
+    public static PlayerId of(String uuid) {
+        return new PlayerId(UUID.fromString(uuid));
+    }
 }
