@@ -1,7 +1,9 @@
 package cat.itacademy.s04.t02.n02.blackjack.game.infrastructure.web.mapper;
 
+import cat.itacademy.s04.t02.n02.blackjack.game.application.dto.command.DeleteGameCommand;
 import cat.itacademy.s04.t02.n02.blackjack.game.application.dto.command.GameCreateCommand;
 import cat.itacademy.s04.t02.n02.blackjack.game.application.dto.result.GameResult;
+import cat.itacademy.s04.t02.n02.blackjack.game.infrastructure.web.dto.request.DeleteGameRequest;
 import cat.itacademy.s04.t02.n02.blackjack.game.infrastructure.web.dto.request.GameCreateRequest;
 import cat.itacademy.s04.t02.n02.blackjack.game.infrastructure.web.dto.response.GameCreateResponse;
 import org.springframework.stereotype.Component;
@@ -17,5 +19,9 @@ public class GameWebMapper {
         return new GameCreateResponse(
                 result.gameId(),
                 result.gameStatus());
+    }
+
+    public DeleteGameCommand toCommand(DeleteGameRequest request) {
+        return new DeleteGameCommand(request.gameId());
     }
 }
