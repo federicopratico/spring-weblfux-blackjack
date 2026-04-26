@@ -17,11 +17,9 @@ import java.time.Instant;
 public class ResolvePlayerHandler implements DomainEventSubscriber {
 
     private final ResolvePlayerUseCase resolvePlayerUseCase;
-    private final DomainEventPublisher eventPublisher;
 
     public ResolvePlayerHandler(ResolvePlayerUseCase resolvePlayerUseCase, DomainEventPublisher eventPublisher) {
         this.resolvePlayerUseCase = resolvePlayerUseCase;
-        this.eventPublisher = eventPublisher;
     }
 
     @Override
@@ -33,24 +31,9 @@ public class ResolvePlayerHandler implements DomainEventSubscriber {
     }
 
     private Mono<Void> onPlayerResolutionRequested(PlayerResolutionRequestedEvent event) {
-        ResolvePlayerCommand command = new ResolvePlayerCommand(event.playerName());
+        ResolvePlayerCommand command = new ResolvePlayerCommand(event.gameId(), event.playerName());
 
         return resolvePlayerUseCase.execute(command)
-                .doOnNext(player -> eventPublisher.publish(new PlayerResolvedEvent(
-                        event.gameId(),
-                        player.getPlayerId().toString(),
-                        player.getPlayerName().name(),
-                        Instant.now()
-                )))
-                .then()
-                .onErrorResume(error -> {
-                    eventPublisher.publish(new PlayerResolutionFailedEvent(
-                            event.gameId(),
-                            event.playerName(),
-                            error.getMessage(),
-                            Instant.now()));
-
-                    return Mono.error(error);
-                });
+                .then();
     }
 }

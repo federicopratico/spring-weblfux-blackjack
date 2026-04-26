@@ -48,24 +48,20 @@ public class ResolvePlayerService implements ResolvePlayerUseCase {
     }
 
     private Mono<Void> publishResolvedEvent(String gameId, Player player) {
-        return Mono.fromRunnable(() ->
-                domainEventPublisher.publish(new PlayerResolvedEvent(
-                        gameId,
-                        player.getPlayerId().toString(),
-                        player.getPlayerName().name(),
-                        Instant.now()
-                ))
-        );
+        return domainEventPublisher.publish(new PlayerResolvedEvent(
+                gameId,
+                player.getPlayerId().toString(),
+                player.getPlayerName().name(),
+                Instant.now()
+        ));
     }
 
     private Mono<Void> publishFailedEvent(String gameId, String playerName, Throwable error) {
-        return Mono.fromRunnable(() ->
-                domainEventPublisher.publish(new PlayerResolutionFailedEvent(
-                        gameId,
-                        playerName,
-                        error.getMessage(),
-                        Instant.now()
-                ))
-        );
+        return domainEventPublisher.publish(new PlayerResolutionFailedEvent(
+                gameId,
+                playerName,
+                error.getMessage(),
+                Instant.now()
+        ));
     }
 }
