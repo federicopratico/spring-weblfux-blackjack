@@ -26,12 +26,15 @@ public class CreateGameService implements CreateGameUseCase {
         Game game = Game.create(command.playerName());
 
         return gameRepository.save(game)
-                .doOnSuccess(savedGame -> domainEventPublisher.publish(
-                        new PlayerResolutionRequestedEvent(
-                                savedGame.getGameId().toString(),
-                                command.playerName(),
-                                Instant.now())
-                ))
+                .flatMap(savedGame ->
+                        domainEventPublisher.publish(
+                            new PlayerResolutionRequestedEvent(
+                                    savedGame.getGameId().toString(),
+                                    command.playerName(),
+                                    Instant.now()
+                            )
+                        ).thenReturn(savedGame)
+                )
                 .map(GameResult::from);
     }
 }
