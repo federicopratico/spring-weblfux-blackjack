@@ -4,7 +4,7 @@ import cat.itacademy.s04.t02.n02.blackjack.game.application.dto.command.DeleteGa
 import cat.itacademy.s04.t02.n02.blackjack.game.application.exception.GameNotFoundException;
 import cat.itacademy.s04.t02.n02.blackjack.game.application.port.in.DeleteGameUseCase;
 import cat.itacademy.s04.t02.n02.blackjack.game.application.port.out.GameRepository;
-import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.indentity.GameId;
+import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.identity.GameId;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;

@@ -3,7 +3,7 @@ package cat.itacademy.s04.t02.n02.blackjack.game.application.service;
 import cat.itacademy.s04.t02.n02.blackjack.game.application.dto.command.DeleteGameCommand;
 import cat.itacademy.s04.t02.n02.blackjack.game.application.exception.GameNotFoundException;
 import cat.itacademy.s04.t02.n02.blackjack.game.application.port.out.GameRepository;
-import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.indentity.GameId;
+import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.identity.GameId;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

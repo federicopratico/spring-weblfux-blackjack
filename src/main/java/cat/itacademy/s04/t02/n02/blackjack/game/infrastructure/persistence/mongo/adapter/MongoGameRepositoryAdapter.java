@@ -2,7 +2,7 @@ package cat.itacademy.s04.t02.n02.blackjack.game.infrastructure.persistence.mong
 
 import cat.itacademy.s04.t02.n02.blackjack.game.application.port.out.GameRepository;
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.entity.Game;
-import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.indentity.GameId;
+import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.identity.GameId;
 import cat.itacademy.s04.t02.n02.blackjack.game.infrastructure.persistence.mongo.document.GameDocument;
 import cat.itacademy.s04.t02.n02.blackjack.game.infrastructure.persistence.mongo.mapper.GamePersistenceMapper;
 import cat.itacademy.s04.t02.n02.blackjack.game.infrastructure.persistence.mongo.repository.MongoGameSpringRepository;
