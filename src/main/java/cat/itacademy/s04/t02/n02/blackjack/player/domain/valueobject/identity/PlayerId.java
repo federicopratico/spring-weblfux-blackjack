@@ -11,4 +11,9 @@ public record PlayerId(UUID uuid) {
     public static PlayerId of(String uuid) {
         return new PlayerId(UUID.fromString(uuid));
     }
+
+    @Override
+    public String toString() {
+        return uuid.toString();
+    }
 }

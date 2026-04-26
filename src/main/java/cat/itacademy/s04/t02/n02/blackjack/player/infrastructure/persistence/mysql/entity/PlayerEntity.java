@@ -1,0 +1,56 @@
+package cat.itacademy.s04.t02.n02.blackjack.player.infrastructure.persistence.mysql.entity;
+
+import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.domain.Persistable;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
+import java.math.BigDecimal;
+
+@Getter
+@Setter
+@ToString
+@Table("players")
+public class PlayerEntity implements Persistable<String> {
+    @Id
+    private String id;
+
+    @Column("name")
+    private String name;
+
+    @Column("deposit")
+    private BigDecimal deposit;
+
+    @Column("games_played")
+    private int gamesPlayed;
+
+    @Column("games_won")
+    private int gamesWon;
+
+    @Column("games_lost")
+    private int gamesLost;
+
+    @Transient
+    private boolean isNew;
+
+    private PlayerEntity(String id, String name, BigDecimal deposit, int gamesPlayed, int gamesWon, int gamesLost) {
+        this.id = id;
+        this.name = name;
+        this.deposit = deposit;
+        this.gamesPlayed = gamesPlayed;
+        this.gamesWon = gamesWon;
+        this.gamesLost =gamesLost;
+        this.isNew = true;
+    }
+
+    public static PlayerEntity newEntity(String id, String name, BigDecimal deposit) {
+        return new PlayerEntity(id, name, deposit, 0, 0, 0);
+    }
+
+    @Override
+    public boolean isNew() {
+        return isNew || id == null;
+    }
+}
