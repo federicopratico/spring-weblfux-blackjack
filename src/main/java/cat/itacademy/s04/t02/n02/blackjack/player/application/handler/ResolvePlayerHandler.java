@@ -3,22 +3,18 @@ package cat.itacademy.s04.t02.n02.blackjack.player.application.handler;
 import cat.itacademy.s04.t02.n02.blackjack.player.application.command.ResolvePlayerCommand;
 import cat.itacademy.s04.t02.n02.blackjack.player.application.port.in.ResolvePlayerUseCase;
 import cat.itacademy.s04.t02.n02.blackjack.share.event.event.DomainEvent;
-import cat.itacademy.s04.t02.n02.blackjack.share.event.event.PlayerResolutionFailedEvent;
 import cat.itacademy.s04.t02.n02.blackjack.share.event.event.PlayerResolutionRequestedEvent;
-import cat.itacademy.s04.t02.n02.blackjack.share.event.event.PlayerResolvedEvent;
-import cat.itacademy.s04.t02.n02.blackjack.share.event.publisher.DomainEventPublisher;
 import cat.itacademy.s04.t02.n02.blackjack.share.event.subscriber.DomainEventSubscriber;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
-import java.time.Instant;
 
 @Component
 public class ResolvePlayerHandler implements DomainEventSubscriber {
 
     private final ResolvePlayerUseCase resolvePlayerUseCase;
 
-    public ResolvePlayerHandler(ResolvePlayerUseCase resolvePlayerUseCase, DomainEventPublisher eventPublisher) {
+    public ResolvePlayerHandler(ResolvePlayerUseCase resolvePlayerUseCase) {
         this.resolvePlayerUseCase = resolvePlayerUseCase;
     }
 

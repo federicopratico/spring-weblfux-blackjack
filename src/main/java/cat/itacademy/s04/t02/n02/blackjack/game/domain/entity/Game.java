@@ -2,7 +2,7 @@ package cat.itacademy.s04.t02.n02.blackjack.game.domain.entity;
 
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.GameStatus;
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.dealer.Dealer;
-import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.indentity.GameId;
+import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.identity.GameId;
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.seat.Seat;
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.shoe.Shoe;
 import cat.itacademy.s04.t02.n02.blackjack.player.domain.valueobject.identity.PlayerId;

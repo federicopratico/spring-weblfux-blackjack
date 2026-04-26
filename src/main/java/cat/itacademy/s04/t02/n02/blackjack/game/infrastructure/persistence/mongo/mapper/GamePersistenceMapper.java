@@ -7,7 +7,7 @@ import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.card.Rank;
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.card.Suit;
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.dealer.Dealer;
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.hand.Hand;
-import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.indentity.GameId;
+import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.identity.GameId;
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.playerreference.PlayerReference;
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.playerreference.ResolvedPlayerReference;
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.playerreference.UnresolvedPlayerReference;
