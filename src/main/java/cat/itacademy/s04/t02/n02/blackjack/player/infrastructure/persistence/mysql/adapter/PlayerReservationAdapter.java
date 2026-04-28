@@ -2,7 +2,7 @@ package cat.itacademy.s04.t02.n02.blackjack.player.infrastructure.persistence.my
 
 import cat.itacademy.s04.t02.n02.blackjack.game.application.port.out.PlayerBetReservationPort;
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.identity.GameId;
-import cat.itacademy.s04.t02.n02.blackjack.player.application.command.ReserveBetCommand;
+import cat.itacademy.s04.t02.n02.blackjack.player.application.dto.command.ReserveBetCommand;
 import cat.itacademy.s04.t02.n02.blackjack.player.application.port.in.ReserveBetUseCase;
 import cat.itacademy.s04.t02.n02.blackjack.player.domain.valueobject.identity.PlayerId;
 import lombok.AllArgsConstructor;

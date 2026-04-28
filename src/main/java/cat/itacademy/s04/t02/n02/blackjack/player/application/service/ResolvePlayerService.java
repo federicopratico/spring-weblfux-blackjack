@@ -1,6 +1,6 @@
 package cat.itacademy.s04.t02.n02.blackjack.player.application.service;
 
-import cat.itacademy.s04.t02.n02.blackjack.player.application.command.ResolvePlayerCommand;
+import cat.itacademy.s04.t02.n02.blackjack.player.application.dto.command.ResolvePlayerCommand;
 import cat.itacademy.s04.t02.n02.blackjack.player.application.port.in.ResolvePlayerUseCase;
 import cat.itacademy.s04.t02.n02.blackjack.player.application.port.out.PlayerRepository;
 import cat.itacademy.s04.t02.n02.blackjack.player.domain.entity.Player;

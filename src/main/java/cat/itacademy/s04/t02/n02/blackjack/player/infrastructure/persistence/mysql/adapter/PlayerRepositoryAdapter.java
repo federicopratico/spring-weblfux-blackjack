@@ -9,6 +9,7 @@ import cat.itacademy.s04.t02.n02.blackjack.player.infrastructure.persistence.mys
 import cat.itacademy.s04.t02.n02.blackjack.player.infrastructure.persistence.mysql.repository.DataPlayerSpringRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Repository
@@ -42,6 +43,12 @@ public class PlayerRepositoryAdapter implements PlayerRepository {
     @Override
     public Mono<Player> findById(PlayerId playerId) {
         return playerSpringRepository.findById(playerId.toString())
+                .map(mapper::toDomain);
+    }
+
+    @Override
+    public Flux<Player> findAll() {
+        return playerSpringRepository.findAll()
                 .map(mapper::toDomain);
     }
 }

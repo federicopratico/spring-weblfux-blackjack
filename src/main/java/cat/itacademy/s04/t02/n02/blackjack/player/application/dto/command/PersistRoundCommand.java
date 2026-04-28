@@ -1,4 +1,4 @@
-package cat.itacademy.s04.t02.n02.blackjack.player.application.command;
+package cat.itacademy.s04.t02.n02.blackjack.player.application.dto.command;
 
 import java.math.BigDecimal;
 
