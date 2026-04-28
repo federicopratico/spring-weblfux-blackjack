@@ -2,6 +2,7 @@ package cat.itacademy.s04.t02.n02.blackjack.game.infrastructure.persistence.mong
 
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.entity.Game;
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.GameStatus;
+import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.RoundOutcome;
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.card.Card;
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.card.Rank;
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.card.Suit;
@@ -27,7 +28,8 @@ public class GamePersistenceMapper {
                 this.toDealerDocument(game.getDealer()),
                 this.toSeatDocument(game.getSeat()),
                 this.toShoeDocument(game.getShoe()),
-                game.getGameStatus().name()
+                game.getGameStatus().name(),
+                game.getRoundOutcome().name()
         );
     }
 
@@ -37,7 +39,8 @@ public class GamePersistenceMapper {
                 this.toDealer(document.dealer()),
                 this.toSeat(document.seat()),
                 this.toShoe(document.shoe()),
-                GameStatus.valueOf(document.gameStatus())
+                GameStatus.valueOf(document.gameStatus()),
+                RoundOutcome.valueOf(document.roundOutcome())
         );
     }
 
@@ -92,7 +95,8 @@ public class GamePersistenceMapper {
 
     private Dealer toDealer(DealerDocument dealerDocument) {
         return Dealer.reconstruct(
-                this.toHand(dealerDocument.hand()));
+                this.toHand(dealerDocument.hand())
+        );
     }
 
     private HandDocument toHandDocument(Hand hand) {
