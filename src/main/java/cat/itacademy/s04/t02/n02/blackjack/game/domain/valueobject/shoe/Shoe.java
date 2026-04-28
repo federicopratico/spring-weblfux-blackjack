@@ -1,5 +1,6 @@
 package cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.shoe;
 
+import cat.itacademy.s04.t02.n02.blackjack.game.domain.exception.EmptyShoeException;
 import cat.itacademy.s04.t02.n02.blackjack.game.domain.valueobject.card.Card;
 
 import java.util.*;
@@ -40,7 +41,11 @@ public class Shoe {
         return new Shoe(cards, initialShoeSize);
     }
 
-    public Optional<Card> draw() {
+    public Card draw() {
+        return tryDraw().orElseThrow(() -> new EmptyShoeException("No cards left in the shoe"));
+    }
+
+    private Optional<Card> tryDraw() {
         if(cards.isEmpty())
             return Optional.empty();
 

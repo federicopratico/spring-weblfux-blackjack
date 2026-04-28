@@ -51,11 +51,19 @@ public class Hand {
         return handValue;
     }
 
+    public boolean isTwentyOne() {
+        return getHandValue() == 21;
+    }
+
     public boolean isBusted() {
         return getHandValue() > 21;
     }
 
     public boolean isBlackJack() {
         return (cards.size() == 2 && getHandValue() == 21);
+    }
+
+    public void clear() {
+        cards.clear();
     }
 }
