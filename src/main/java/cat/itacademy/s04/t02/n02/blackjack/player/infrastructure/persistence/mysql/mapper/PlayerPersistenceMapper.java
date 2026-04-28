@@ -15,9 +15,11 @@ public class PlayerPersistenceMapper {
                 player.getPlayerName().name(),
                 player.getDeposit()
         );
+        entity.setReservedDeposit(player.getReservedDeposit());
         entity.setGamesPlayed(player.getGamesPlayed());
         entity.setGamesWon(player.getGamesWon());
         entity.setGamesLost(player.getGamesLost());
+        entity.setGamesDrawn(player.getGamesDrawn());
         return entity;
     }
 
@@ -26,9 +28,11 @@ public class PlayerPersistenceMapper {
                 PlayerId.of(entity.getId()),
                 PlayerName.create(entity.getName()),
                 entity.getDeposit(),
+                entity.getReservedDeposit(),
                 entity.getGamesPlayed(),
                 entity.getGamesWon(),
-                entity.getGamesLost()
+                entity.getGamesLost(),
+                entity.getGamesDrawn()
         );
     }
 }

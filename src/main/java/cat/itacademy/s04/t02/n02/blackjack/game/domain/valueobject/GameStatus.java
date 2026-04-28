@@ -6,5 +6,6 @@ public enum GameStatus {
     DEALING,
     PLAYERS_TURN,
     DEALER_TURN,
-    ROUND_OVER;
+    OUTCOME,
+    ROUND_OVER,
 }

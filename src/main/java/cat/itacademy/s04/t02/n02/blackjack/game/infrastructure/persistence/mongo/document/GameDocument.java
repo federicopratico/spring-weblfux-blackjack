@@ -10,5 +10,6 @@ public record GameDocument(
         DealerDocument dealer,
         SeatDocument seat,
         ShoeDocument shoe,
-        String gameStatus
+        String gameStatus,
+        String roundOutcome
 ) {}
