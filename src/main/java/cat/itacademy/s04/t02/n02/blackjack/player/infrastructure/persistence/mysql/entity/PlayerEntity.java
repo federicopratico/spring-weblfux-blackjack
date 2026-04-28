@@ -57,6 +57,10 @@ public class PlayerEntity implements Persistable<String> {
         return new PlayerEntity(id, name, deposit, BigDecimal.ZERO, 0, 0, 0, 0);
     }
 
+    public void markNotNew() {
+        this.isNew = false;
+    }
+
     @Override
     public boolean isNew() {
         return isNew || id == null;
