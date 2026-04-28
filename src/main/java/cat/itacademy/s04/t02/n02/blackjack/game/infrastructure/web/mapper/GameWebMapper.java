@@ -4,15 +4,29 @@ import cat.itacademy.s04.t02.n02.blackjack.game.application.dto.command.DeleteGa
 import cat.itacademy.s04.t02.n02.blackjack.game.application.dto.command.GameCreateCommand;
 import cat.itacademy.s04.t02.n02.blackjack.game.application.dto.command.MakePlayCommand;
 import cat.itacademy.s04.t02.n02.blackjack.game.application.dto.result.GameResult;
+import cat.itacademy.s04.t02.n02.blackjack.game.application.dto.view.GameView;
 import cat.itacademy.s04.t02.n02.blackjack.game.infrastructure.web.dto.request.DeleteGameRequest;
 import cat.itacademy.s04.t02.n02.blackjack.game.infrastructure.web.dto.request.GameCreateRequest;
 import cat.itacademy.s04.t02.n02.blackjack.game.infrastructure.web.dto.request.MakePlayRequest;
 import cat.itacademy.s04.t02.n02.blackjack.game.infrastructure.web.dto.response.GameCreateResponse;
+import cat.itacademy.s04.t02.n02.blackjack.game.infrastructure.web.dto.response.GameDetailsResponse;
 import cat.itacademy.s04.t02.n02.blackjack.game.infrastructure.web.dto.response.MakePlayResponse;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GameWebMapper {
+
+    public GameDetailsResponse toGameDetailsResponse(GameView view) {
+        return new GameDetailsResponse(
+                view.gameId(),
+                view.gameStatus(),
+                view.bet(),
+                view.playerStatus(),
+                view.playerHandValue(),
+                view.dealerHandValue(),
+                view.roundOutcome()
+        );
+    }
 
     public MakePlayCommand toCommand(String gameId, MakePlayRequest request) {
         return new MakePlayCommand(
