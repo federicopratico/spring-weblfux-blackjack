@@ -23,6 +23,9 @@ public class PlayerEntity implements Persistable<String> {
     @Column("deposit")
     private BigDecimal deposit;
 
+    @Column("reserved_deposit")
+    private BigDecimal reservedDeposit;
+
     @Column("games_played")
     private int gamesPlayed;
 
@@ -32,21 +35,26 @@ public class PlayerEntity implements Persistable<String> {
     @Column("games_lost")
     private int gamesLost;
 
+    @Column("games_drawn")
+    private int gamesDrawn;
+
     @Transient
     private boolean isNew;
 
-    private PlayerEntity(String id, String name, BigDecimal deposit, int gamesPlayed, int gamesWon, int gamesLost) {
+    private PlayerEntity(String id, String name, BigDecimal deposit, BigDecimal reservedDeposit, int gamesPlayed, int gamesWon, int gamesLost, int gamesDrawn) {
         this.id = id;
         this.name = name;
         this.deposit = deposit;
+        this.reservedDeposit = reservedDeposit;
         this.gamesPlayed = gamesPlayed;
         this.gamesWon = gamesWon;
         this.gamesLost =gamesLost;
         this.isNew = true;
+        this.gamesDrawn = gamesDrawn;
     }
 
     public static PlayerEntity newEntity(String id, String name, BigDecimal deposit) {
-        return new PlayerEntity(id, name, deposit, 0, 0, 0);
+        return new PlayerEntity(id, name, deposit, BigDecimal.ZERO, 0, 0, 0, 0);
     }
 
     @Override
