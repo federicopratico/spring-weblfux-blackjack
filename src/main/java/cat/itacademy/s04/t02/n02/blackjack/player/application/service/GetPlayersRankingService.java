@@ -50,6 +50,6 @@ public class GetPlayersRankingService implements GetPlayersRankingUseCase {
         if (played <= 0) return BigDecimal.ZERO.setScale(4);
         BigDecimal wins = BigDecimal.valueOf(p.getGamesWon());
         return wins
-                .divide(BigDecimal.valueOf(played), 4, RoundingMode.HALF_UP); // win rate in [0,1]
+                .divide(BigDecimal.valueOf(played), 4, RoundingMode.HALF_UP);
     }
 }
