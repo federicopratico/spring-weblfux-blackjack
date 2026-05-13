@@ -1,0 +1,42 @@
+services:
+  app:
+    build: .
+    container_name: blackjack-app
+    ports:
+      - "8080:8080"
+    environment:
+      # We point to the service names "mongodb" and "mysql" defined in your file
+      - SPRING_DATA_MONGODB_URI=mongodb://blackjack-mongodb:27017/blackjack
+      - SPRING_R2DBC_URL=r2dbc:mysql://blackjack-mysql:3306/blackjack
+      - SPRING_R2DBC_USERNAME=blackjack_user
+      - SPRING_R2DBC_PASSWORD=blackjack_pass
+    depends_on:
+      - mongodb
+      - mysql
+  mongodb:
+    image: mongo:7.0
+    container_name: blackjack-mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: blackjack
+    volumes:
+      - mongodb_data:/data/db
+
+  mysql:
+    image: mysql:8.0
+    container_name: blackjack-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: blackjack
+      MYSQL_USER: blackjack_user
+      MYSQL_PASSWORD: blackjack_pass
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  mongodb_data:
+  mysql_data:

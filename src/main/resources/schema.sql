@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS players (
+    id VARCHAR(36) PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    deposit DECIMAL(19,2) NOT NULL,
+    reserved_deposit DECIMAL(19,2) NOT NULL DEFAULT 0,
+    games_played INT NOT NULL DEFAULT 0,
+    games_won INT NOT NULL DEFAULT 0,
+    games_lost INT NOT NULL DEFAULT 0,
+    games_drawn INT NOT NULL DEFAULT 0
+);
